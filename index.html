@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mova — Premium Food Delivery</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <!-- ===== LOADER ===== -->
+  <div id="loader">
+    <div class="loader-inner">
+      <span class="loader-logo">🔥 Mova</span>
+      <div class="loader-bar"><div class="loader-fill"></div></div>
+    </div>
+  </div>
+
+  <!-- ===== NAVBAR ===== -->
+  <nav id="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="nav-logo">🔥 Mova</a>
+
+      <!-- Delivery Address (top-left, shows after input) -->
+      <div class="nav-address-display" id="navAddressDisplay" style="display:none">
+        <span class="nav-address-icon">📍</span>
+        <span class="nav-address-text" id="navAddressText"></span>
+      </div>
+
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html" class="nav-link active">Home</a></li>
+        <li><a href="menu.html" class="nav-link">Menu</a></li>
+        <li><a href="filter.html" class="nav-link">Filter</a></li>
+        <li><a href="partner.html" class="nav-link">Partners</a></li>
+        <li><a href="courier.html" class="nav-link">Couriers</a></li>
+      </ul>
+      <div class="nav-right">
+        <a href="login.html" class="btn btn-outline btn-sm nav-login-btn">Log In</a>
+        <button class="cart-btn" id="cartBtn" aria-label="Open cart">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+          <span class="cart-count" id="cartCount">0</span>
+        </button>
+        <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ===== HERO ===== -->
+  <section id="home" class="hero">
+    <div class="hero-bg">
+      <div class="hero-gradient"></div>
+      <div class="hero-particles" id="heroParticles"></div>
+    </div>
+    <div class="hero-content">
+      <div class="hero-badge fade-up">🔥 Free delivery on orders over $30</div>
+      <h1 class="hero-title fade-up">
+        <span class="title-line">TASTE THE</span>
+        <span class="title-line accent">Mova</span>
+      </h1>
+      <p class="hero-desc fade-up">Handcrafted burgers, wraps & salads delivered hot to your door. Bold flavors, premium ingredients, legendary taste.</p>
+
+      <!-- DELIVERY ADDRESS INPUT -->
+      <div class="delivery-address-wrap fade-up">
+        <div class="address-input-box">
+          <span class="address-icon">📍</span>
+          <input type="text" id="deliveryAddressInput" placeholder="Enter your delivery address..." autocomplete="off" />
+          <button class="address-submit-btn" id="addressSubmitBtn">Set Address</button>
+        </div>
+        <div class="address-suggestions" id="addressSuggestions"></div>
+      </div>
+
+      <div class="hero-actions fade-up">
+        <a href="menu.html" class="btn btn-primary">Order Now <span class="btn-arrow">→</span></a>
+        <a href="filter.html" class="btn btn-outline">Browse Menu</a>
+      </div>
+      <div class="hero-stats fade-up">
+        <div class="stat"><span class="stat-num">4.9★</span><span class="stat-label">Rating</span></div>
+        <div class="stat-divider"></div>
+        <div class="stat"><span class="stat-num">25min</span><span class="stat-label">Avg Delivery</span></div>
+        <div class="stat-divider"></div>
+        <div class="stat"><span class="stat-num">50k+</span><span class="stat-label">Orders</span></div>
+      </div>
+    </div>
+    <div class="hero-image-wrap fade-right">
+      <div class="hero-glow"></div>
+      <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=700&q=80" alt="Signature Burger" class="hero-img" />
+      <div class="hero-badge-float badge-float-1">🍔 #1 Burger</div>
+      <div class="hero-badge-float badge-float-2">⚡ 25 min</div>
+    </div>
+    </div>
+  </section>
+
+  <!-- ===== MARQUEE ===== -->
+  <div class="marquee-strip">
+    <div class="marquee-track">
+      <span>🔥 Smash Burgers</span><span>•</span>
+      <span>🌯 Shawarmas</span><span>•</span>
+      <span>🥗 Fresh Salads</span><span>•</span>
+      <span>🍟 Loaded Fries</span><span>•</span>
+      <span>🥤 Craft Shakes</span><span>•</span>
+      <span>🍕 Street Food</span><span>•</span>
+      <span>🔥 Smash Burgers</span><span>•</span>
+      <span>🌯 Shawarmas</span><span>•</span>
+      <span>🥗 Fresh Salads</span><span>•</span>
+      <span>🍟 Loaded Fries</span><span>•</span>
+    </div>
+  </div>
+
+  <!-- ===== SALE / DISCOUNTED MENU ===== -->
+  <section id="menu" class="menu-section">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-tag">🔖 Limited Time Deals</span>
+        <h2 class="section-title">TODAY'S <span class="accent">SALE</span></h2>
+        <p class="section-desc">Exclusive discounts — order now before they're gone!</p>
+      </div>
+      <div class="menu-grid" id="menuGrid">
+        <!-- Sale items injected by JS -->
+      </div>
+      <div class="section-cta reveal">
+        <a href="menu.html" class="btn btn-primary">View Full Menu →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FEATURES ===== -->
+  <section class="features-section">
+    <div class="container">
+      <div class="features-grid">
+        <div class="feature-card reveal">
+          <div class="feature-icon">🔥</div>
+          <h3>Fresh & Hot</h3>
+          <p>Every order prepared fresh on demand. No pre-cooking, no compromises.</p>
+        </div>
+        <div class="feature-card reveal">
+          <div class="feature-icon">⚡</div>
+          <h3>Fast Delivery</h3>
+          <p>Average delivery time of 25 minutes. Your food arrives hot, every time.</p>
+        </div>
+        <div class="feature-card reveal">
+          <div class="feature-icon">🌿</div>
+          <h3>Premium Ingredients</h3>
+          <p>Locally sourced produce and ethically raised beef. Quality you can taste.</p>
+        </div>
+        <div class="feature-card reveal">
+          <div class="feature-icon">🏆</div>
+          <h3>Award Winning</h3>
+          <p>Best Burger in the City — 3 years running. Critics and customers agree.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== PARTNER / RIDER / CAREERS SECTION ===== -->
+  <section class="join-section">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-tag">Join the Family</span>
+        <h2 class="section-title">GROW WITH <span class="accent">Mova</span></h2>
+      </div>
+      <div class="join-grid">
+        <div class="join-card reveal">
+          <div class="join-icon">🛵</div>
+          <h3>Become a Rider</h3>
+          <p>Enjoy flexibility, freedom and competitive earnings by delivering through Mova. Set your own schedule and ride your way.</p>
+          <a href="courier.html" class="btn btn-outline btn-sm">Register here →</a>
+        </div>
+        <div class="join-card reveal featured-join">
+          <div class="join-badge-top">Most Popular</div>
+          <div class="join-icon">🏪</div>
+          <h3>Become a Partner</h3>
+          <p>Grow with Mova! Our technology and user base can help you boost sales and unlock new opportunities for your restaurant.</p>
+          <a href="partner.html" class="btn btn-primary btn-sm">Register here →</a>
+        </div>
+        <div class="join-card reveal">
+          <div class="join-icon">💼</div>
+          <h3>Careers</h3>
+          <p>Ready for an exciting new challenge? If you're ambitious, humble, and love working with others, then we want to hear from you!</p>
+          <a href="courier.html#careers" class="btn btn-outline btn-sm">Register here →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== ABOUT ===== -->
+  <section id="about" class="about-section">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-image-wrap reveal">
+          <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=700&q=80" alt="Our Kitchen" class="about-img" />
+          <div class="about-badge">Est. 2018</div>
+          <div class="about-stat-card">
+            <span class="asc-num">50,000+</span>
+            <span class="asc-label">Happy Customers</span>
+          </div>
+        </div>
+        <div class="about-content reveal">
+          <span class="section-tag">Our Story</span>
+          <h2 class="section-title">BORN FROM <span class="accent">FIRE</span></h2>
+          <p class="about-text">Mova started in Tbilisi in 2018 with one simple obsession: the perfect burger. What began as a weekend pop-up grew into a full delivery empire built on the same values — quality, speed, and flavor that hits different.</p>
+          <p class="about-text">We source everything locally, grind our own beef fresh daily, and bake our buns in-house. Every shawarma is carved from halal meat marinated overnight. Every salad is chopped to order.</p>
+          <div class="about-values">
+            <div class="value-item"><span class="value-icon">✓</span> Locally sourced ingredients</div>
+            <div class="value-item"><span class="value-icon">✓</span> Freshly ground beef daily</div>
+            <div class="value-item"><span class="value-icon">✓</span> No frozen products ever</div>
+            <div class="value-item"><span class="value-icon">✓</span> Eco-friendly packaging</div>
+          </div>
+          <a href="menu.html" class="btn btn-primary">Explore Menu →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CONTACT — SUPPORT SECTION ===== -->
+  <section id="contact" class="contact-section">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-tag">Need Help?</span>
+        <h2 class="section-title">CONTACT OUR <span class="accent">SUPPORT</span></h2>
+        <p class="section-desc">We're here 24/7. Choose how you'd like to reach us.</p>
+      </div>
+      <div class="support-cards-grid reveal">
+        <div class="support-card" id="liveSupportCard">
+          <div class="support-card-icon">💬</div>
+          <h3>Live Chat Support</h3>
+          <p>Chat with a real support agent right now. Average response time: under 2 minutes.</p>
+          <span class="support-badge online">● Online Now</span>
+          <button class="btn btn-primary btn-sm" id="openLiveChatBtn">Start Live Chat</button>
+        </div>
+        <div class="support-card">
+          <div class="support-card-icon">📞</div>
+          <h3>Call Us</h3>
+          <p>Speak directly with our support team. Available every day from 10am to 10pm.</p>
+          <span class="support-badge">📞 +995 32 200 00 00</span>
+          <a href="tel:+995322000000" class="btn btn-outline btn-sm">Call Now</a>
+        </div>
+        <div class="support-card">
+          <div class="support-card-icon">📧</div>
+          <h3>Email Support</h3>
+          <p>Send us a message and we'll get back to you within 2 hours during business hours.</p>
+          <span class="support-badge">support@mova.ge</span>
+          <a href="mailto:support@mova.ge" class="btn btn-outline btn-sm">Send Email</a>
+        </div>
+        <div class="support-card">
+          <div class="support-card-icon">❓</div>
+          <h3>Common Issues</h3>
+          <p>Browse our help center for answers to frequently asked questions.</p>
+          <div class="faq-mini">
+            <details><summary>My order is late</summary><p>Check your order status on the <a href="order.html">order page</a>. If it's been over 45 min, contact live chat.</p></details>
+            <details><summary>Wrong item received</summary><p>Take a photo and contact live chat immediately. We'll resend or refund within minutes.</p></details>
+            <details><summary>Payment issue</summary><p>Contact us via email or call and provide your order number.</p></details>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== LIVE CHAT WIDGET ===== -->
+  <div class="live-chat-widget" id="liveChatWidget" style="display:none">
+    <div class="chat-header">
+      <div class="chat-agent">
+        <img src="https://i.pravatar.cc/36?img=12" alt="Support Agent" />
+        <div>
+          <strong>Nino — Support</strong>
+          <span class="agent-status">● Online</span>
+        </div>
+      </div>
+      <button class="chat-close-btn" id="closeLiveChatBtn">✕</button>
+    </div>
+    <div class="chat-messages" id="chatMessages">
+      <div class="chat-msg agent-msg">
+        <span>👋 Hey! I'm Nino from Mova support. How can I help you today?</span>
+      </div>
+    </div>
+    <div class="chat-input-wrap">
+      <input type="text" id="chatInput" placeholder="Type your message..." />
+      <button class="chat-send-btn" id="chatSendBtn">➤</button>
+    </div>
+  </div>
+  <button class="chat-fab" id="chatFab" aria-label="Live chat">
+    <span>💬</span>
+    <span class="chat-fab-dot"></span>
+  </button>
+
+  <!-- ===== TESTIMONIALS ===== -->
+  <section class="testimonials-section">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-tag">What People Say</span>
+        <h2 class="section-title">REAL <span class="accent">REVIEWS</span></h2>
+      </div>
+      <div class="testimonials-grid">
+        <div class="testimonial-card reveal">
+          <div class="stars">★★★★★</div>
+          <p>"The smash burger is absolutely unreal. Crispy edges, juicy center, perfect sauce ratio. I order 3x a week."</p>
+          <div class="reviewer"><img src="https://i.pravatar.cc/40?img=1" alt="" /><div><strong>Marcus T.</strong><span>Regular Customer</span></div></div>
+        </div>
+        <div class="testimonial-card reveal">
+          <div class="stars">★★★★★</div>
+          <p>"Best shawarma I've ever had. The garlic sauce is out of this world. Delivery was blazing fast."</p>
+          <div class="reviewer"><img src="https://i.pravatar.cc/40?img=5" alt="" /><div><strong>Leila K.</strong><span>Food Blogger</span></div></div>
+        </div>
+        <div class="testimonial-card reveal">
+          <div class="stars">★★★★★</div>
+          <p>"I'm obsessed with the Caesar salad. Huge portions, fresh ingredients, and the house dressing is addictive."</p>
+          <div class="reviewer"><img src="https://i.pravatar.cc/40?img=9" alt="" /><div><strong>Jamie R.</strong><span>Fitness Coach</span></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="footer-logo">🔥 Mova</div>
+          <p>Bold flavors delivered fast. Premium street food for people who refuse to settle.</p>
+          <div class="social-links">
+            <a href="#" class="social-link" aria-label="Instagram">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+            </a>
+            <a href="#" class="social-link" aria-label="Twitter/X">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+            </a>
+            <a href="#" class="social-link" aria-label="TikTok">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.23 8.23 0 004.83 1.55V6.79a4.85 4.85 0 01-1.06-.1z"/></svg>
+            </a>
+          </div>
+        </div>
+        <div class="footer-links-col">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="menu.html">Menu</a></li>
+            <li><a href="filter.html">Filter Menu</a></li>
+            <li><a href="order.html">Track Order</a></li>
+          </ul>
+        </div>
+        <div class="footer-links-col">
+          <h4>Join Us</h4>
+          <ul>
+            <li><a href="courier.html">Become a Rider</a></li>
+            <li><a href="partner.html">Become a Partner</a></li>
+            <li><a href="courier.html#careers">Careers</a></li>
+            <li><a href="login.html">Log In / Sign Up</a></li>
+          </ul>
+        </div>
+        <div class="footer-links-col">
+          <h4>Hours</h4>
+          <ul class="hours-list">
+            <li><span>Mon – Thu</span><span>11am – 10pm</span></li>
+            <li><span>Fri – Sat</span><span>11am – 11pm</span></li>
+            <li><span>Sunday</span><span>12pm – 9pm</span></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2025 Mova Food Delivery. All rights reserved.</p>
+        <p>Made with 🔥 in Tbilisi.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ===== CART PANEL ===== -->
+  <div class="cart-overlay" id="cartOverlay"></div>
+  <div class="cart-panel" id="cartPanel">
+    <div class="cart-header">
+      <h3>Your Order</h3>
+      <button class="cart-close" id="cartClose">✕</button>
+    </div>
+    <div class="cart-items" id="cartItems">
+      <div class="cart-empty" id="cartEmpty">
+        <span>🛒</span>
+        <p>Your cart is empty</p>
+        <small>Add some items from the menu!</small>
+      </div>
+    </div>
+    <div class="cart-footer" id="cartFooter" style="display:none">
+      <div class="cart-subtotal"><span>Subtotal</span><span id="cartSubtotal">$0.00</span></div>
+      <div class="cart-delivery"><span>Delivery</span><span id="cartDelivery">$3.99</span></div>
+      <div class="cart-total"><span>Total</span><span id="cartTotal">$0.00</span></div>
+      <button class="btn btn-primary btn-full checkout-btn" id="checkoutBtn">Checkout →</button>
+      <button class="btn btn-ghost btn-full" id="clearCartBtn">Clear Cart</button>
+    </div>
+  </div>
+
+  <button class="scroll-top" id="scrollTop" aria-label="Scroll to top">↑</button>
+  <script src="script.js"></script>
+</body>
+</html>

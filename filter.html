@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Filter Menu — Mova</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet" />
+</head>
+<body class="filter-page">
+
+  <!-- ===== NAVBAR ===== -->
+  <nav id="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="nav-logo">🔥 Mova</a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html" class="nav-link">Home</a></li>
+        <li><a href="filter.html" class="nav-link active">Menu</a></li>
+        <li><a href="partner.html" class="nav-link">Partners</a></li>
+        <li><a href="courier.html" class="nav-link">Couriers</a></li>
+      </ul>
+      <div class="nav-right">
+        <button class="theme-toggle-btn" id="themeToggleBtn" aria-label="Toggle light mode" title="Toggle light/dark mode">🌙</button>
+        <button class="cart-btn" id="cartBtn" aria-label="Open cart">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+          <span class="cart-count" id="cartCount">0</span>
+        </button>
+        <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ===== FILTER HERO ===== -->
+  <div class="filter-hero">
+    <div class="container">
+      <h1 class="filter-hero-title">BROWSE THE <span class="accent">MENU</span></h1>
+      <p>Filter by category, price, and more. Find exactly what you're craving.</p>
+    </div>
+  </div>
+
+  <!-- ===== FILTER PAGE ===== -->
+  <section class="filter-section">
+    <div class="container filter-layout">
+
+      <!-- SIDEBAR -->
+      <aside class="filter-sidebar" id="filterSidebar">
+        <div class="filter-sidebar-inner">
+
+          <div class="filter-block">
+            <h3 class="filter-block-title">Categories</h3>
+            <div class="filter-cats" id="filterCats">
+              <button class="filter-cat-btn active" data-cat="all">🍽️ All Items</button>
+              <button class="filter-cat-btn" data-cat="burgers">🍔 Burgers</button>
+              <button class="filter-cat-btn" data-cat="shawarmas">🌯 Shawarmas</button>
+              <button class="filter-cat-btn" data-cat="salads">🥗 Salads</button>
+              <button class="filter-cat-btn" data-cat="sides">🍟 Sides</button>
+              <button class="filter-cat-btn" data-cat="drinks">🥤 Drinks</button>
+            </div>
+          </div>
+
+          <div class="filter-block">
+            <h3 class="filter-block-title">Price Range</h3>
+            <div class="price-range-wrap">
+              <div class="price-display">
+                <span id="priceMin">$5</span> — <span id="priceMax">$50</span>
+              </div>
+              <div class="range-slider-wrap">
+                <input type="range" id="rangeMin" class="range-slider" min="5" max="50" value="5" step="1" />
+                <input type="range" id="rangeMax" class="range-slider" min="5" max="50" value="50" step="1" />
+                <div class="range-track">
+                  <div class="range-fill" id="rangeFill"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="filter-block">
+            <h3 class="filter-block-title">Sort By</h3>
+            <div class="sort-options">
+              <label class="sort-option">
+                <input type="radio" name="sort" value="default" checked />
+                <span>Featured</span>
+              </label>
+              <label class="sort-option">
+                <input type="radio" name="sort" value="price-asc" />
+                <span>Price: Low to High</span>
+              </label>
+              <label class="sort-option">
+                <input type="radio" name="sort" value="price-desc" />
+                <span>Price: High to Low</span>
+              </label>
+              <label class="sort-option">
+                <input type="radio" name="sort" value="rating" />
+                <span>Top Rated</span>
+              </label>
+            </div>
+          </div>
+
+          <div class="filter-block">
+            <h3 class="filter-block-title">Dietary</h3>
+            <div class="dietary-options">
+              <label class="check-option">
+                <input type="checkbox" id="vegCheck" />
+                <span class="checkmark"></span>
+                <span>🌱 Vegetarian</span>
+              </label>
+              <label class="check-option">
+                <input type="checkbox" id="spicyCheck" />
+                <span class="checkmark"></span>
+                <span>🌶️ Spicy</span>
+              </label>
+              <label class="check-option">
+                <input type="checkbox" id="popularCheck" />
+                <span class="checkmark"></span>
+                <span>⭐ Popular</span>
+              </label>
+            </div>
+          </div>
+
+          <button class="btn btn-outline btn-full" id="resetFilters">Reset All Filters</button>
+        </div>
+      </aside>
+
+      <!-- PRODUCT GRID -->
+      <div class="filter-main">
+        <div class="filter-toolbar">
+          <div class="results-info">
+            <span id="resultsCount">0</span> items found
+          </div>
+          <div class="view-toggle">
+            <button class="view-btn active" id="gridView" aria-label="Grid view">
+              <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+            </button>
+            <button class="view-btn" id="listView" aria-label="List view">
+              <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><rect x="3" y="4" width="18" height="4"/><rect x="3" y="10" width="18" height="4"/><rect x="3" y="16" width="18" height="4"/></svg>
+            </button>
+          </div>
+          <button class="mobile-filter-btn" id="mobileFilterBtn">⚙️ Filters</button>
+        </div>
+
+        <div class="filter-products-grid" id="filterProductsGrid">
+          <!-- Injected by JS -->
+        </div>
+
+        <div class="no-results" id="noResults" style="display:none">
+          <span>😔</span>
+          <h3>No items match your filters</h3>
+          <p>Try adjusting your price range or category</p>
+          <button class="btn btn-primary" id="noResultsReset">Reset Filters</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CART PANEL ===== -->
+  <div class="cart-overlay" id="cartOverlay"></div>
+  <div class="cart-panel" id="cartPanel">
+    <div class="cart-header">
+      <h3>Your Order</h3>
+      <button class="cart-close" id="cartClose" aria-label="Close cart">✕</button>
+    </div>
+    <div class="cart-items" id="cartItems">
+      <div class="cart-empty" id="cartEmpty">
+        <span>🛒</span>
+        <p>Your cart is empty</p>
+        <small>Add some items from the menu!</small>
+      </div>
+    </div>
+    <div class="cart-footer" id="cartFooter" style="display:none">
+      <div class="cart-subtotal">
+        <span>Subtotal</span><span id="cartSubtotal">$0.00</span>
+      </div>
+      <div class="cart-delivery">
+        <span>Delivery</span><span id="cartDelivery">$3.99</span>
+      </div>
+      <div class="cart-total">
+        <span>Total</span><span id="cartTotal">$0.00</span>
+      </div>
+      <button class="btn btn-primary btn-full checkout-btn" id="checkoutBtn">Checkout →</button>
+      <button class="btn btn-ghost btn-full" id="clearCartBtn">Clear Cart</button>
+    </div>
+  </div>
+
+  <!-- ===== CHECKOUT MODAL ===== -->
+  <div class="modal-overlay" id="checkoutOverlay" style="display:none">
+    <div class="checkout-modal">
+      <button class="modal-close" id="checkoutClose">✕</button>
+      <h2>🔥 Order Placed!</h2>
+      <p>Your Mova order is confirmed and being prepared right now.</p>
+      <div class="order-eta"><span>⚡</span><strong>Estimated delivery: 20–30 minutes</strong></div>
+      <button class="btn btn-primary btn-full" id="continueBtn">Continue Ordering</button>
+    </div>
+  </div>
+
+  <button class="scroll-top" id="scrollTop" aria-label="Scroll to top">↑</button>
+
+  <script src="script.js"></script>
+</body>
+</html>

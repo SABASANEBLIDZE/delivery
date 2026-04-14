@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Your Order — Mova</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Syne:wght@400;600;700;800&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet" />
+</head>
+<body class="order-page">
+
+  <nav id="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="nav-logo">🔥 Mova</a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html" class="nav-link">Home</a></li>
+        <li><a href="filter.html" class="nav-link">Menu</a></li>
+      </ul>
+      <div class="nav-right">
+        <button class="theme-toggle-btn" id="themeToggleBtn" aria-label="Toggle light mode" title="Toggle light/dark mode">🌙</button>
+        <a href="login.html" class="btn btn-outline btn-sm">Log In</a>
+        <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+  </nav>
+
+  <div class="order-page-wrap">
+    <div class="container">
+
+      <!-- ORDER STATUS HEADER -->
+      <div class="order-status-header reveal">
+        <div class="order-fire-anim">🔥</div>
+        <h1 class="order-title">Your Order is <span class="accent">On the Way!</span></h1>
+        <p class="order-subtitle">Order #INF-<span id="orderNumber"></span> · Placed <span id="orderTime"></span></p>
+
+        <!-- COUNTDOWN TIMER -->
+        <div class="delivery-countdown">
+          <div class="countdown-ring">
+            <svg viewBox="0 0 120 120" class="countdown-svg">
+              <circle cx="60" cy="60" r="54" class="countdown-bg-circle" />
+              <circle cx="60" cy="60" r="54" class="countdown-progress-circle" id="countdownCircle" />
+            </svg>
+            <div class="countdown-inner">
+              <span class="countdown-minutes" id="countdownMinutes">20</span>
+              <span class="countdown-label">min left</span>
+            </div>
+          </div>
+          <div class="countdown-info">
+            <h3>Estimated Delivery</h3>
+            <p id="deliveryTimeRange">Loading...</p>
+            <div class="eta-bar">
+              <div class="eta-fill" id="etaFill"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ORDER STEPS -->
+      <div class="order-steps reveal">
+        <div class="step done" id="step1">
+          <div class="step-icon">✓</div>
+          <div class="step-text">
+            <strong>Order Confirmed</strong>
+            <span>Your order was received</span>
+          </div>
+        </div>
+        <div class="step-line done" id="line1"></div>
+        <div class="step done" id="step2">
+          <div class="step-icon">🍳</div>
+          <div class="step-text">
+            <strong>Preparing</strong>
+            <span>Kitchen is cooking your meal</span>
+          </div>
+        </div>
+        <div class="step-line" id="line2"></div>
+        <div class="step active" id="step3">
+          <div class="step-icon">🛵</div>
+          <div class="step-text">
+            <strong>On the Way</strong>
+            <span>Courier is heading to you</span>
+          </div>
+        </div>
+        <div class="step-line" id="line3"></div>
+        <div class="step" id="step4">
+          <div class="step-icon">🏠</div>
+          <div class="step-text">
+            <strong>Delivered</strong>
+            <span>Enjoy your meal!</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="order-body-grid">
+
+        <!-- MAP SECTION -->
+        <div class="order-map-section reveal">
+          <div class="map-card">
+            <div class="map-header">
+              <h3>Live Tracking</h3>
+              <span class="live-badge">● LIVE</span>
+            </div>
+            <!-- SVG Tbilisi Map Simulation -->
+            <div class="tbilisi-map" id="tbilisiMap">
+              <svg viewBox="0 0 600 400" xmlns="http://www.w3.org/2000/svg" class="map-svg">
+                <!-- Background -->
+                <rect width="600" height="400" fill="#1a2744"/>
+                <!-- Roads -->
+                <g stroke="#243461" stroke-width="8" fill="none">
+                  <line x1="0" y1="200" x2="600" y2="200"/>
+                  <line x1="300" y1="0" x2="300" y2="400"/>
+                  <line x1="0" y1="120" x2="600" y2="280"/>
+                  <line x1="0" y1="280" x2="600" y2="120"/>
+                  <line x1="150" y1="0" x2="150" y2="400"/>
+                  <line x1="450" y1="0" x2="450" y2="400"/>
+                  <line x1="0" y1="80" x2="600" y2="80"/>
+                  <line x1="0" y1="320" x2="600" y2="320"/>
+                </g>
+                <!-- Road highlights -->
+                <g stroke="#2d4080" stroke-width="3" fill="none">
+                  <line x1="0" y1="200" x2="600" y2="200"/>
+                  <line x1="300" y1="0" x2="300" y2="400"/>
+                  <line x1="0" y1="120" x2="600" y2="280"/>
+                  <line x1="150" y1="0" x2="150" y2="400"/>
+                  <line x1="450" y1="0" x2="450" y2="400"/>
+                </g>
+                <!-- Water (Mtkvari river) -->
+                <path d="M 0 230 Q 150 210 300 220 Q 450 230 600 215" stroke="#1e4d8c" stroke-width="12" fill="none" opacity="0.6"/>
+                <!-- Blocks / buildings -->
+                <g fill="#1e2d55" opacity="0.8">
+                  <rect x="20" y="20" width="100" height="40" rx="4"/>
+                  <rect x="160" y="20" width="80" height="35" rx="4"/>
+                  <rect x="310" y="20" width="100" height="40" rx="4"/>
+                  <rect x="460" y="20" width="90" height="35" rx="4"/>
+                  <rect x="20" y="90" width="80" height="50" rx="4"/>
+                  <rect x="160" y="90" width="90" height="45" rx="4"/>
+                  <rect x="320" y="90" width="80" height="50" rx="4"/>
+                  <rect x="460" y="90" width="100" height="45" rx="4"/>
+                  <rect x="20" y="240" width="100" height="40" rx="4"/>
+                  <rect x="170" y="240" width="80" height="50" rx="4"/>
+                  <rect x="320" y="250" width="90" height="40" rx="4"/>
+                  <rect x="460" y="240" width="100" height="45" rx="4"/>
+                  <rect x="20" y="340" width="110" height="40" rx="4"/>
+                  <rect x="180" y="340" width="80" height="40" rx="4"/>
+                  <rect x="310" y="340" width="100" height="40" rx="4"/>
+                  <rect x="460" y="340" width="90" height="40" rx="4"/>
+                </g>
+                <!-- Green parks -->
+                <g fill="#1a3a2a" opacity="0.7">
+                  <circle cx="480" cy="170" r="25"/>
+                  <circle cx="90" cy="310" r="20"/>
+                  <circle cx="380" cy="350" r="18"/>
+                </g>
+                <!-- Route line -->
+                <path id="routePath" d="M 120 80 Q 200 120 300 160 Q 380 190 430 250" stroke="#ff5c00" stroke-width="3" fill="none" stroke-dasharray="8 4" opacity="0.8"/>
+
+                <!-- Restaurant marker (origin) -->
+                <g id="restaurantMarker" transform="translate(115, 70)">
+                  <circle cx="0" cy="0" r="16" fill="#ff5c00" opacity="0.25"/>
+                  <circle cx="0" cy="0" r="10" fill="#ff5c00"/>
+                  <text x="0" y="4" text-anchor="middle" font-size="10" fill="white">🔥</text>
+                </g>
+                <text x="115" y="50" text-anchor="middle" font-size="9" fill="#ff8a50" font-family="sans-serif">Mova</text>
+
+                <!-- Delivery marker (destination) -->
+                <g id="deliveryMarker" transform="translate(435, 258)">
+                  <circle cx="0" cy="0" r="16" fill="#3b82f6" opacity="0.25"/>
+                  <circle cx="0" cy="0" r="10" fill="#3b82f6"/>
+                  <text x="0" y="4" text-anchor="middle" font-size="10" fill="white">🏠</text>
+                </g>
+                <text x="435" y="285" text-anchor="middle" font-size="9" fill="#60a5fa" font-family="sans-serif">You</text>
+
+                <!-- Courier (animated) -->
+                <g id="courierMarker">
+                  <circle cx="0" cy="0" r="14" fill="#10b981" opacity="0.3"/>
+                  <circle cx="0" cy="0" r="9" fill="#10b981"/>
+                  <text x="0" y="4" text-anchor="middle" font-size="9" fill="white">🛵</text>
+                </g>
+
+                <!-- Area labels -->
+                <text x="480" y="165" text-anchor="middle" font-size="8" fill="#4a6080" font-family="sans-serif">Vake</text>
+                <text x="300" y="195" text-anchor="middle" font-size="8" fill="#4a6080" font-family="sans-serif">Center</text>
+                <text x="150" y="310" text-anchor="middle" font-size="8" fill="#4a6080" font-family="sans-serif">Isani</text>
+                <text x="90" y="60" text-anchor="middle" font-size="8" fill="#4a6080" font-family="sans-serif">Saburtalo</text>
+              </svg>
+
+              <!-- Courier info overlay -->
+              <div class="courier-info-overlay">
+                <img src="https://i.pravatar.cc/40?img=15" alt="Courier" class="courier-avatar" />
+                <div class="courier-details">
+                  <strong>Giorgi M.</strong>
+                  <span>⭐ 4.97 · 🛵 Courier</span>
+                </div>
+                <button class="courier-call-btn">📞 Call</button>
+              </div>
+            </div>
+
+            <div class="map-legend">
+              <span><span class="legend-dot" style="background:#ff5c00"></span> Restaurant</span>
+              <span><span class="legend-dot" style="background:#10b981"></span> Courier</span>
+              <span><span class="legend-dot" style="background:#3b82f6"></span> You</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- ORDER SUMMARY -->
+        <div class="order-summary-section reveal">
+          <div class="order-summary-card">
+            <h3>Order Summary</h3>
+            <div class="order-items-list" id="orderItemsList">
+              <!-- Injected by JS -->
+            </div>
+            <div class="order-summary-totals" id="orderSummaryTotals">
+              <!-- Injected by JS -->
+            </div>
+          </div>
+
+          <div class="order-restaurant-card">
+            <h4>📍 Restaurant</h4>
+            <p id="orderRestaurant">Mova Main — 5 Kostava St, Tbilisi</p>
+            <h4 style="margin-top:16px">🚗 Your Address</h4>
+            <p id="orderDeliveryAddress">Loading address...</p>
+          </div>
+
+          <div class="order-actions">
+            <a href="index.html" class="btn btn-primary btn-full">Order Again 🔥</a>
+            <a href="index.html#contact" class="btn btn-ghost btn-full">Contact Support</a>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- RATE ORDER (shows after delivery) -->
+      <div class="rate-order-section" id="rateOrderSection" style="display:none">
+        <h3>How was your order?</h3>
+        <div class="rating-stars" id="ratingStars">
+          <button class="rate-star" data-val="1">★</button>
+          <button class="rate-star" data-val="2">★</button>
+          <button class="rate-star" data-val="3">★</button>
+          <button class="rate-star" data-val="4">★</button>
+          <button class="rate-star" data-val="5">★</button>
+        </div>
+        <p class="rate-label" id="rateLabel">Tap a star to rate</p>
+        <button class="btn btn-primary" id="submitRating" style="display:none">Submit Rating</button>
+      </div>
+
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
